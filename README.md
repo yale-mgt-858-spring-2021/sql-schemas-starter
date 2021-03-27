@@ -12,7 +12,6 @@ tests on that schema to see if it conforms to the requirements that I articulate
 
 We suggest you complete the questions in the following order
 
-- [ ] schema-test
 
 
 As you complete questions, you can mark them as complete
