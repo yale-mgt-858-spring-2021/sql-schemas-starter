@@ -16,7 +16,8 @@ So, please check the class website and slack for updates. Also, I hope
 to release the grading code...but it's going to take me a bit to 
 package it up.
 
-Well...here we go. 
+Well...here we go. Accept [this GitHub Classroom invite](https://classroom.github.com/a/evwjW2B9)
+and then tell me the URL of your repo through the class website.
 
 * The class homework PostgreSQL database includes a schema with your name
   and you have full write permissions on it. I have one called `bald_chicken`.
