@@ -62,7 +62,7 @@ and then tell me the URL of your repo through the class website.
     and must be all lower case letters and numbers. It must begin with a letter.
   * `email`, a text field that may not be null, must be a valid email address,
     and must be unique. It should be more than zero but fewer than 100 characters.
-  * `updated_at` of type `timestamp with timezone` (that's `timestampz`) which may not be null and defaults to `NOW()`.
+  * `updated_at` of type `timestamp with time zone` (that's `timestampz`) which may not be null and defaults to `NOW()`.
   * `role_id`, a foreign key to the `id` column in the `roles` table that
     may not be null.
 * Create a [trigger](https://www.postgresqltutorial.com/postgresql-triggers/) that will 
