@@ -168,7 +168,6 @@ and then tell me the URL of your repo through the class website.
   `<` and `>` and not `<=` and `>=`.
 * Fix misspelling: `timestampz` should be `timestamptz`.
 * Add note about foreign key update/delete cascading.
-* Add regexes where students can use them
 * Note that the `daterange` for `terms` can be inclusive or exclusive of the
   ends. It doesn't matter.
 * Added all the regexes that I used to the problem statement so people don't spend
