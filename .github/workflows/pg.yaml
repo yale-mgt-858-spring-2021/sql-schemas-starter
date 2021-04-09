@@ -1,0 +1,48 @@
+name: PG container example
+on: push
+
+jobs:
+  # Label of the container job
+  container-job:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+
+    # Docker Hub image that `container-job` executes in
+    # container: subzerocloud/pgtap:pg13
+    container: yellowtrex/mgt858-dbgrader:latest
+
+    services:
+      postgres:
+        image: postgis/postgis:13-3.1 
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+        - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Load student answer
+        env:
+          PGHOST: postgres
+          PGPASSWORD: postgres
+          PGUSER: postgres
+          PGPORT: ${{ job.services.postgres.ports[5432] }}
+          PGDATABASE: postgres
+        run: |
+          psql -f "${GITHUB_WORKSPACE}/00-schema-test/answer.sql"
+      - name: Run tests
+        env:
+          # use postgres for the host here because we have specified a container for the job.
+          # If we were running the job on the VM this would be localhost
+          POSTGRES_HOST: postgres
+          PASSWORD: postgres
+          USER: postgres
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+          DATABASE: postgres
+        run: |
+          /test.sh -t "${GITHUB_WORKSPACE}/.github/test.sql" -h $POSTGRES_HOST -p $POSTGRES_PORT -u $USER -w $PASSWORD -d $DATABASE -v -i
+
