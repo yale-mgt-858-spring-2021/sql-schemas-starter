@@ -76,7 +76,7 @@ and then tell me the URL of your repo through the class website.
   set the `updated_at` column of a row in users to `now()` whenever the row is updated.
   As with table creation, make sure this is idempotent. Use `CREATE OR REPLACE FUNCTION` and
   `DROP TRIGGER IF EXISTS` (Google it 😎) accomplish that, otherwise you're going to 
-  get errors when you rerun your `answer.sql` SQL.
+  get errors when you rerun your `answer.sql` SQL. This is a [common pattern](https://x-team.com/blog/automatic-timestamps-with-postgresql/).
 * Please add the following students to the user table. (Please try to do this "properly",
   by not hard-coding the `role_id`, you might think about using 
   the so-called "insert into select" form 
@@ -176,6 +176,8 @@ and then tell me the URL of your repo through the class website.
 ### Thu Apr  8 14:37:00 EDT 2021
 * Course `name` not null
 
+### Sun Apr 11 14:16:09 EDT 2021
+* Add link to example trigger function for timestamps
   
 
 
